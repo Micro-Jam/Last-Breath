@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqu1cwjbiinev"]
+
+[ext_resource type="PackedScene" uid="uid://c4rjmy1oo3gtk" path="res://scenes/player/player.tscn" id="1_af5lh"]
+[ext_resource type="PackedScene" uid="uid://gfl8hsen81v7" path="res://scenes/enemies/enemy_1.tscn" id="2_iucnc"]
+[ext_resource type="PackedScene" uid="uid://b077dchk5p0qv" path="res://scenes/enemies/enemy_2.tscn" id="3_h6jfa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unbdd"]
+size = Vector2(50, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvjmm"]
+size = Vector2(1216, 60)
+
+[node name="main" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1156.0
+offset_bottom = 648.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.18359, 0.18359, 0.18359, 1)
+
+[node name="player" parent="." instance=ExtResource("1_af5lh")]
+position = Vector2(521, 269)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 315)
+shape = SubResource("RectangleShape2D_unbdd")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1179, 320)
+shape = SubResource("RectangleShape2D_unbdd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(590, -18)
+shape = SubResource("RectangleShape2D_qvjmm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(574, 655)
+shape = SubResource("RectangleShape2D_qvjmm")
+
+[node name="Enemy_1" parent="." instance=ExtResource("2_iucnc")]
+position = Vector2(231, 136)
+
+[node name="Enemy_2" parent="." instance=ExtResource("2_iucnc")]
+position = Vector2(912, 536)
+
+[node name="Enemy_3" parent="." instance=ExtResource("2_iucnc")]
+position = Vector2(955, 81)
+
+[node name="Enemy_4" parent="." instance=ExtResource("2_iucnc")]
+position = Vector2(250, 369)
+
+[node name="Enemy_5" parent="." instance=ExtResource("2_iucnc")]
+position = Vector2(646, 301)
+
+[node name="shoot_1" parent="." instance=ExtResource("3_h6jfa")]
+position = Vector2(912, 536)
+
+[node name="shoot_2" parent="." instance=ExtResource("3_h6jfa")]
+position = Vector2(423, 531)
+
+[node name="shoot_3" parent="." instance=ExtResource("3_h6jfa")]
+position = Vector2(872, 234)
