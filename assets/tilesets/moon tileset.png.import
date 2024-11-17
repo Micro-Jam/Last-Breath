@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgwkttcm6pryn"
-path="res://.godot/imported/xp orb.png-18bfae5e3bfaf419aac9330ecc2e8e4e.ctex"
+uid="uid://dsmilfi75nf7l"
+path="res://.godot/imported/moon tileset.png-45be93225e5b68c0c6f439e75e493184.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/xp orb.png"
-dest_files=["res://.godot/imported/xp orb.png-18bfae5e3bfaf419aac9330ecc2e8e4e.ctex"]
+source_file="res://assets/tilesets/moon tileset.png"
+dest_files=["res://.godot/imported/moon tileset.png-45be93225e5b68c0c6f439e75e493184.ctex"]
 
 [params]
 

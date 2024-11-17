@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dqu1cwjbiinev"]
+[gd_scene load_steps=8 format=3 uid="uid://dqu1cwjbiinev"]
 
 [ext_resource type="PackedScene" uid="uid://c4rjmy1oo3gtk" path="res://scenes/player/player.tscn" id="1_af5lh"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_xkwbk"]
 [ext_resource type="PackedScene" uid="uid://5hrxkrop1apl" path="res://scenes/spawner/spawner.tscn" id="2_8gu6p"]
 [ext_resource type="PackedScene" uid="uid://dk0m4uorgyldu" path="res://scenes/world/stage.tscn" id="4_ewddk"]
+[ext_resource type="Script" path="res://scenes/main/static_body_2d.gd" id="4_ymjk4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unbdd"]
 size = Vector2(50, 650)
@@ -20,6 +21,7 @@ script = ExtResource("1_xkwbk")
 position = Vector2(521, 269)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+script = ExtResource("4_ymjk4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 315)
@@ -38,5 +40,3 @@ position = Vector2(574, 655)
 shape = SubResource("RectangleShape2D_qvjmm")
 
 [node name="spawner" parent="." instance=ExtResource("2_8gu6p")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
