@@ -21,8 +21,10 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 func _on_body_entered(body):
 	body.take_dmg()
+	body.knockback += direction * 75
 	queue_free()
+	
 func take_dmg():
 	var health
-	health -= 10
+	50
 	

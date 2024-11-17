@@ -1,28 +1,26 @@
 extends Area2D
 
 
-var player
-var direction
-var speed = 250
+@onready var player = get_tree().get_first_node_in_group("player")
 
-func _ready():
-	player = get_parent().find_child("player")
-	direction  = (player.position - position).normalized()
-	
-	
+var direction = Vector2.RIGHT
+var speed = 300
+var distance  = 100
+
+
 func _physics_process(delta):
-	position += direction *speed *delta
+	position += direction * speed * delta
+	var distance = (player.position - position).length()
+
+
+func _on_body_entered(body: Node2D) -> void:
+	queue_free()
 	
 
 
-func _on_visible_on_screen_notifier_2d_screen_exited():
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 
 
-func _on_body_entered(body):
-	body.take_dmg()
+func _on_area_entered(area: Area2D) -> void:
 	queue_free()
-func take_dmg():
-	var health
-	health -= 10
-	

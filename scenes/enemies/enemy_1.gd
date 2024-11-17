@@ -1,9 +1,27 @@
 extends CharacterBody2D
 
 var SPEED = 100
+var dmg:float
+var knockback : Vector2
+
+var health :float= 100:
+	set(value):
+		health = value
+		$ProgressBar.value = value
+		if health <=0:
+			queue_free()
+
+var type :spawn_A:
+	set(value):
+		type = value
+		$Sprite2D.texture = value.texture
+		dmg = value.dmg
+
+
+
+
 
 @onready var attack_timer = $Timer
-
 @onready var player =get_tree().get_first_node_in_group("player")
 
 var randomnum
@@ -32,6 +50,11 @@ func _physics_process(delta):
 			move(player.global_position, delta)
 		HIT:
 			move(player.global_position, delta)
+			knockback = knockback.move_toward(Vector2(10,10),10)
+			velocity += knockback
+			var collider = move_and_collide(velocity * delta)
+			if collider:
+				collider.get_collider().knockback = (collider.get_collider().global_position - global_position).normalized() * 50
 			print("HIT")
 			#Slash ANIM
 
@@ -58,4 +81,4 @@ func _on_timer_timeout() -> void:
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	queue_free()
+	health -=100

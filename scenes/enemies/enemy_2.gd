@@ -8,17 +8,17 @@ extends CharacterBody2D
 var can_shoot = true
 
 
-'''var health: float = 100:
+var health :float= 100:
 	set(value):
 		health = value
-		%hp.value = value
-		if value ==0:
-			queue_free()'''
+		$ProgressBar.value = value
+		if health <=0:
+			queue_free()
 
 
 var direction : Vector2
 var speed : float = 50
-var damage : float
+
 
 func _physics_process(delta):
 	var distance = (player.position - position).length()
@@ -52,3 +52,9 @@ func shoot():
 
 func _on_timer_timeout() -> void:
 	can_shoot = true
+
+
+func _on_hurt_area_entered(area: Area2D) -> void:
+	take_dmg()
+func take_dmg():
+	health -=50
