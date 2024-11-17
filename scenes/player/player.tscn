@@ -1,11 +1,12 @@
-[gd_scene load_steps=28 format=3 uid="uid://c4rjmy1oo3gtk"]
+[gd_scene load_steps=27 format=3 uid="uid://c4rjmy1oo3gtk"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ap05o"]
 [ext_resource type="Texture2D" uid="uid://c1lia2po63yo3" path="res://icon.svg" id="3_2lrkp"]
 [ext_resource type="PackedScene" uid="uid://bw7apmvugkrpk" path="res://scenes/player/hands.tscn" id="4_4c4ac"]
 [ext_resource type="Texture2D" uid="uid://ekpgfegrjq2d" path="res://assets/characters/astronaut walk.png" id="5_822xr"]
 [ext_resource type="Texture2D" uid="uid://cm0nar47hlmlf" path="res://assets/characters/idle.png" id="5_n6dmj"]
-[ext_resource type="Texture2D" uid="uid://beo6qw1eq47jo" path="res://assets/ui/status bar.png" id="6_st5u3"]
+[ext_resource type="Texture2D" uid="uid://b3xtrjievvr5t" path="res://assets/ui/empty_bar.png" id="6_indbp"]
+[ext_resource type="Texture2D" uid="uid://c4c7i02hal804" path="res://assets/ui/bar.png" id="7_33u5l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj3m1"]
 radius = 6.0
@@ -67,9 +68,15 @@ tracks/1/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_k5n4o"]
+resource_name = "health_bar"
+length = 1.00003
+step = 0.333333
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_17tqs"]
 _data = {
 "RESET": SubResource("Animation_08qt2"),
+"health_bar": SubResource("Animation_k5n4o"),
 "shield_equip": SubResource("Animation_2rxyj")
 }
 
@@ -166,47 +173,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ep6kp"]
-atlas = ExtResource("6_st5u3")
-region = Rect2(0, 32, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_phfjb"]
-atlas = ExtResource("6_st5u3")
-region = Rect2(0, 16, 32, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5p15x"]
-atlas = ExtResource("6_st5u3")
-region = Rect2(0, 0, 32, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tmdt5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ep6kp")
-}],
-"loop": true,
-"name": &"1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_phfjb")
-}],
-"loop": true,
-"name": &"2",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5p15x")
-}],
-"loop": true,
-"name": &"3",
-"speed": 0.0
-}]
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yse8"]
+radius = 7.78621
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(4, 4)
+scale = Vector2(3, 3)
 script = ExtResource("1_ap05o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -233,31 +204,42 @@ shape = SubResource("CircleShape2D_481vx")
 disabled = true
 
 [node name="hands" parent="." instance=ExtResource("4_4c4ac")]
-position = Vector2(53, 0)
+position = Vector2(6, -0.25)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g6mju")
 animation = &"run"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position_smoothing_enabled = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 0)
-
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="health" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
-position = Vector2(25, 10)
-sprite_frames = SubResource("SpriteFrames_tmdt5")
-animation = &"3"
-autoplay = "3"
+[node name="health" type="TextureProgressBar" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+offset_left = -105.0
+offset_top = -53.0
+offset_right = -73.0
+offset_bottom = -37.0
+max_value = 90.0
+value = 90.0
+texture_under = ExtResource("6_indbp")
+texture_progress = ExtResource("7_33u5l")
+texture_progress_offset = Vector2(12.74, -6)
+
+[node name="hurt_box" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
+shape = SubResource("CircleShape2D_6yse8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="area_entered" from="shield" to="." method="_on_shield_area_entered"]
 [connection signal="body_entered" from="shield" to="." method="_on_shield_body_entered"]
+[connection signal="area_entered" from="hurt_box" to="." method="_on_hurt_box_area_entered"]
+[connection signal="body_entered" from="hurt_box" to="." method="_on_hurt_box_body_entered"]

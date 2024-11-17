@@ -7,8 +7,8 @@ var knockback : Vector2
 var health :float= 100:
 	set(value):
 		health = value
-		$ProgressBar.value = value
-		if health <=0:
+		$health.value = value
+		if health <=0.0:
 			queue_free()
 
 var type :spawn_A:
@@ -19,6 +19,7 @@ var type :spawn_A:
 
 
 
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 
 @onready var attack_timer = $Timer
@@ -64,7 +65,10 @@ func move(target, delta):
 	var steering = (desired_velocity - velocity) * delta * 10
 	velocity += steering
 	move_and_slide()
-	
+	if direction.x<0:
+		animated_sprite.flip_h = true
+	elif direction.x>0:
+		animated_sprite.flip_h = false
 func get_circle_position(random):
 	var kill_circle_centre = player.global_position
 	var radius = 40

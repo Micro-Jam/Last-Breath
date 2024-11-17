@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://bjl0h7xotjhrw"]
+
+[ext_resource type="Shader" path="res://scenes/menu/menu.gdshader" id="1_r5w2r"]
+[ext_resource type="Script" path="res://scenes/menu/menu.gd" id="1_twdwy"]
+[ext_resource type="Texture2D" uid="uid://bhuu4drtmlkfr" path="res://assets/backgrounds/space background.png" id="1_xqqgh"]
+[ext_resource type="Texture2D" uid="uid://n2vsf6ljslgc" path="res://assets/ui/start.png" id="2_k2s6d"]
+[ext_resource type="Texture2D" uid="uid://dw3ucxsjeugjw" path="res://assets/ui/option.png" id="3_6w3sl"]
+[ext_resource type="AudioStream" path="res://assets/musics/17 - micro jam gameplay music sketch A.mp3" id="6_srnbt"]
+[ext_resource type="Texture2D" uid="uid://kfm6o1j3ml4j" path="res://assets/bullets/title.png" id="7_a562k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h7x86"]
+shader = ExtResource("1_r5w2r")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g2hmp"]
+load_path = "res://.godot/imported/exit.png-dabbf75caa2695889168f8207395e7bf.ctex"
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_twdwy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_h7x86")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xqqgh")
+stretch_mode = 6
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 170.0
+offset_right = 357.0
+offset_bottom = 230.0
+icon = ExtResource("2_k2s6d")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 276.0
+offset_top = 211.0
+offset_right = 358.0
+offset_bottom = 261.0
+icon = ExtResource("3_6w3sl")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Button3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 241.0
+offset_right = 355.0
+offset_bottom = 303.0
+icon = SubResource("CompressedTexture2D_g2hmp")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_srnbt")
+autoplay = true
+attenuation = 0.517632
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(306, 93)
+texture = ExtResource("7_a562k")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]

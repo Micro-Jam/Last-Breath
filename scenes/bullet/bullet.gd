@@ -4,7 +4,7 @@ extends Area2D
 @onready var player = get_tree().get_first_node_in_group("player")
 
 var direction = Vector2.RIGHT
-var speed = 300
+var speed = 600
 var distance  = 100
 
 
