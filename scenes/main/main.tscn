@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://dqu1cwjbiinev"]
+[gd_scene load_steps=11 format=4 uid="uid://dqu1cwjbiinev"]
 
 [ext_resource type="PackedScene" uid="uid://c4rjmy1oo3gtk" path="res://scenes/player/player.tscn" id="1_af5lh"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_xkwbk"]
+[ext_resource type="PackedScene" uid="uid://5hrxkrop1apl" path="res://scenes/spawner/spawner.tscn" id="2_hi3kv"]
 [ext_resource type="Texture2D" uid="uid://dsmilfi75nf7l" path="res://assets/tilesets/moon tileset.png" id="2_ljw6s"]
 [ext_resource type="Script" path="res://scenes/main/static_body_2d.gd" id="4_ymjk4"]
 [ext_resource type="Texture2D" uid="uid://byjvumtboo4an" path="res://assets/props/spaceship.png" id="6_5nj2p"]
@@ -77,3 +78,5 @@ shape = SubResource("RectangleShape2D_qvjmm")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(574, 655)
 shape = SubResource("RectangleShape2D_qvjmm")
+
+[node name="spawner" parent="." instance=ExtResource("2_hi3kv")]
