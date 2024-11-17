@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c4rjmy1oo3gtk"]
+[gd_scene load_steps=28 format=3 uid="uid://c4rjmy1oo3gtk"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ap05o"]
 [ext_resource type="Texture2D" uid="uid://c1lia2po63yo3" path="res://icon.svg" id="3_2lrkp"]
@@ -166,6 +166,45 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep6kp"]
+atlas = ExtResource("6_st5u3")
+region = Rect2(0, 32, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_phfjb"]
+atlas = ExtResource("6_st5u3")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p15x"]
+atlas = ExtResource("6_st5u3")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmdt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep6kp")
+}],
+"loop": true,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_phfjb")
+}],
+"loop": true,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p15x")
+}],
+"loop": true,
+"name": &"3",
+"speed": 0.0
+}]
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(4, 4)
 script = ExtResource("1_ap05o")
@@ -196,30 +235,29 @@ disabled = true
 [node name="hands" parent="." instance=ExtResource("4_4c4ac")]
 position = Vector2(53, 0)
 
-[node name="health" type="ProgressBar" parent="."]
-offset_left = -59.0
-offset_top = -63.0
-offset_right = 61.0
-offset_bottom = -36.0
-value = 100.0
-show_percentage = false
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g6mju")
 animation = &"run"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 
-[node name="Control" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="StatusBar" type="Sprite2D" parent="."]
-position = Vector2(-60, -27.75)
-texture = ExtResource("6_st5u3")
+[node name="health" type="AnimatedSprite2D" parent="CanvasLayer/Control"]
+position = Vector2(25, 10)
+sprite_frames = SubResource("SpriteFrames_tmdt5")
+animation = &"3"
+autoplay = "3"
 
 [connection signal="area_entered" from="shield" to="." method="_on_shield_area_entered"]
 [connection signal="body_entered" from="shield" to="." method="_on_shield_body_entered"]

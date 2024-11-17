@@ -6,11 +6,21 @@ var click_position = Vector2(0, 0)
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var health_bar: AnimatedSprite2D = $CanvasLayer/Control/health
 
-var health :float= 100:
+var health = 3:
 	set(value):
 		health = value
-		$health.value = value
+		if value == 3:
+			health_bar.play("3")
+		elif value == 2:
+			health_bar.play("2")
+		elif value == 1:
+			health_bar.play("1")
+		else:
+			print("moira gesi")
+		print(value)
+		
 var direction =0
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -36,7 +46,10 @@ func _physics_process(delta):
 		animated_sprite.flip_h = true
 	elif velocity.x>0:
 		animated_sprite.flip_h = false
-
+	
+	
+	# custom hp
+	
 
 		
 	 
