@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=3 uid="uid://c4rjmy1oo3gtk"]
+[gd_scene load_steps=24 format=3 uid="uid://c4rjmy1oo3gtk"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ap05o"]
 [ext_resource type="Texture2D" uid="uid://c1lia2po63yo3" path="res://icon.svg" id="3_2lrkp"]
 [ext_resource type="PackedScene" uid="uid://bw7apmvugkrpk" path="res://scenes/player/hands.tscn" id="4_4c4ac"]
 [ext_resource type="Texture2D" uid="uid://ekpgfegrjq2d" path="res://assets/characters/astronaut walk.png" id="5_822xr"]
 [ext_resource type="Texture2D" uid="uid://cm0nar47hlmlf" path="res://assets/characters/idle.png" id="5_n6dmj"]
+[ext_resource type="Texture2D" uid="uid://beo6qw1eq47jo" path="res://assets/ui/status bar.png" id="6_st5u3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj3m1"]
 radius = 6.0
@@ -166,6 +167,7 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(4, 4)
 script = ExtResource("1_ap05o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -206,6 +208,18 @@ show_percentage = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g6mju")
 animation = &"run"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StatusBar" type="Sprite2D" parent="."]
+position = Vector2(-60, -27.75)
+texture = ExtResource("6_st5u3")
 
 [connection signal="area_entered" from="shield" to="." method="_on_shield_area_entered"]
 [connection signal="body_entered" from="shield" to="." method="_on_shield_body_entered"]

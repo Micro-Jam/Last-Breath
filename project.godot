@@ -17,8 +17,11 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/mode=4
-window/stretch/mode="viewport"
+window/size/viewport_width=640
+window/size/viewport_height=320
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="integer"
 
 [global_group]
 
@@ -55,3 +58,7 @@ exit={
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="bullets"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
