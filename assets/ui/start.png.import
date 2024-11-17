@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0etkm11u78mg"
-path="res://.godot/imported/astronaut walk.png-98aad57f1eb2b61a7d12087043b3bee6.ctex"
+uid="uid://bx4nghox2hir"
+path="res://.godot/imported/start.png-fcdea7a70b08606415682975f130806a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/astronaut walk.png"
-dest_files=["res://.godot/imported/astronaut walk.png-98aad57f1eb2b61a7d12087043b3bee6.ctex"]
+source_file="res://assets/ui/start.png"
+dest_files=["res://.godot/imported/start.png-fcdea7a70b08606415682975f130806a.ctex"]
 
 [params]
 
