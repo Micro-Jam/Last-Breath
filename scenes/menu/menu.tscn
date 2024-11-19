@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjl0h7xotjhrw"]
+[gd_scene load_steps=9 format=3 uid="uid://bjl0h7xotjhrw"]
 
 [ext_resource type="Shader" path="res://scenes/menu/menu.gdshader" id="1_r5w2r"]
 [ext_resource type="Script" path="res://scenes/menu/menu.gd" id="1_twdwy"]
 [ext_resource type="Texture2D" uid="uid://bhuu4drtmlkfr" path="res://assets/backgrounds/space background.png" id="1_xqqgh"]
 [ext_resource type="Texture2D" uid="uid://n2vsf6ljslgc" path="res://assets/ui/start.png" id="2_k2s6d"]
 [ext_resource type="Texture2D" uid="uid://dw3ucxsjeugjw" path="res://assets/ui/option.png" id="3_6w3sl"]
-[ext_resource type="AudioStream" path="res://assets/musics/17 - micro jam gameplay music sketch A.mp3" id="6_srnbt"]
 [ext_resource type="Texture2D" uid="uid://kfm6o1j3ml4j" path="res://assets/bullets/title.png" id="7_a562k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7x86"]
@@ -85,7 +84,6 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_srnbt")
 autoplay = true
 attenuation = 0.517632
 

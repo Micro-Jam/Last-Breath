@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://gfl8hsen81v7"]
+[gd_scene load_steps=16 format=3 uid="uid://gfl8hsen81v7"]
 
 [ext_resource type="Script" path="res://scenes/enemies/enemy_1.gd" id="1_fp6ll"]
 [ext_resource type="Texture2D" uid="uid://xgwhpe0k6nr3" path="res://assets/enemies/space_enemy_1_walk.png" id="2_ebpo0"]
@@ -75,15 +75,18 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pg56a"]
-radius = 12.0
+radius = 9.55249
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_suda5"]
-size = Vector2(28, 24)
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqn4k"]
+radius = 9.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tbcir"]
+radius = 9.51315
 
 [node name="Enemy_1" type="CharacterBody2D" groups=["enemy_a"]]
 scale = Vector2(2, 2)
-collision_layer = 13
-collision_mask = 8
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_fp6ll")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -103,12 +106,21 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt_box"]
-shape = SubResource("RectangleShape2D_suda5")
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_hqn4k")
 
 [node name="health" type="ProgressBar" parent="."]
 visible = false
 offset_right = 4.0
 offset_bottom = 27.0
+
+[node name="hit_box" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hit_box"]
+position = Vector2(1, 0)
+shape = SubResource("CircleShape2D_tbcir")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="area_entered" from="hurt_box" to="." method="_on_area_2d_area_entered"]

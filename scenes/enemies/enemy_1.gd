@@ -11,12 +11,6 @@ var health :float= 100:
 		if health <=0.0:
 			queue_free()
 
-var type :spawn_A:
-	set(value):
-		type = value
-		$Sprite2D.texture = value.texture
-		dmg = value.dmg
-
 
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D

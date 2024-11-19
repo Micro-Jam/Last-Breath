@@ -12,6 +12,7 @@ var can_spawn_B =  true
 var can_spawn_Boss
 
 
+
 var stop_spawn = false
 
 
@@ -55,7 +56,7 @@ func _on_timer_timeout() -> void:
 
 func _on_timerb_timeout() -> void:
 	can_spawn_B = true
-	spawn_b(spawn_pos())
+	#spawn_b(spawn_pos())
 
 
 func _on_boss_timer_timeout() -> void:

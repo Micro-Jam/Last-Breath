@@ -17,15 +17,16 @@ var health :float= 100:
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var direction : Vector2
+
 var speed : float = 50
 
 
 func _physics_process(delta):
+	var diretion = (player.position - position).normalized()
 	var distance = (player.position - position).length()
-	if direction.x<0:
+	if diretion.x<0:
 		animated_sprite.flip_h = true
-	elif direction.x>0:
+	elif diretion.x>0:
 		animated_sprite.flip_h = false
 	if distance >= 700:
 		queue_free()
