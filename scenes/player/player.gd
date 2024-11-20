@@ -24,17 +24,13 @@ func _physics_process(delta):
 
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("shield"):
-		animation.play("shield_equip")
-		
-	
 	if event is InputEventScreenTouch or event is InputEventScreenDrag:
 		if $CanvasLayer/Control/joystick.is_pressed():
 			velocity = calculate_joystick_movement(event.position)
 	
 		
 func calculate_joystick_movement(event_position):
-	var texture_center = $CanvasLayer/joystick.position + Vector2(8,8)
+	var texture_center = $CanvasLayer/Control/joystick.position + Vector2(8,8)
 	return (event_position - texture_center).normalized()
 
 func movement(delta):##Player's movement
@@ -43,13 +39,17 @@ func movement(delta):##Player's movement
 	if direction.x < 0:
 		animated_sprite.flip_h  = true;
 		animated_sprite.play("run")
+		move_and_slide()
 	elif direction.x > 0:
 		animated_sprite.flip_h = false
 		animated_sprite.play("run")
+		move_and_slide()
+	elif direction.y != 0:
+		animated_sprite.play("run")
+		move_and_slide()
 	else:
 		animated_sprite.play("idle")
-	move_and_slide()
-
+	
 func _on_shield_area_entered(area: Area2D) -> void:
 	pass
 

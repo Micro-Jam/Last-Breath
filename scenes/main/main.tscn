@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://dqu1cwjbiinev"]
 
-[ext_resource type="PackedScene" uid="uid://c4rjmy1oo3gtk" path="res://scenes/player/player.tscn" id="1_af5lh"]
+[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_af5lh"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_xkwbk"]
 [ext_resource type="Shader" path="res://scenes/menu/menu.gdshader" id="2_ggwg1"]
 [ext_resource type="PackedScene" uid="uid://5hrxkrop1apl" path="res://scenes/spawner/spawner.tscn" id="2_hi3kv"]
