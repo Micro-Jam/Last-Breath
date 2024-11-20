@@ -9,30 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://bnyx1xj706swl" path="res://assets/ui/joystick outercircle.png" id="8_5hitd"]
 [ext_resource type="Texture2D" uid="uid://blk6n4e7hggf8" path="res://assets/ui/joystick innercircle.png" id="9_n3t5x"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj3m1"]
-radius = 6.0
-height = 16.0
-
-[sub_resource type="Animation" id="Animation_08qt2"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_k5n4o"]
-resource_name = "health_bar"
-length = 1.00003
-step = 0.333333
-
-[sub_resource type="Animation" id="Animation_2rxyj"]
-resource_name = "shield_equip"
-length = 1.00002
-step = 0.2
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_17tqs"]
-_data = {
-"RESET": SubResource("Animation_08qt2"),
-"health_bar": SubResource("Animation_k5n4o"),
-"shield_equip": SubResource("Animation_2rxyj")
-}
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_tb5hn"]
 atlas = ExtResource("5_n6dmj")
 region = Rect2(0, 0, 16, 16)
@@ -123,6 +99,29 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vra41"]
+size = Vector2(10, 4)
+
+[sub_resource type="Animation" id="Animation_08qt2"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_k5n4o"]
+resource_name = "health_bar"
+length = 1.00003
+step = 0.333333
+
+[sub_resource type="Animation" id="Animation_2rxyj"]
+resource_name = "shield_equip"
+length = 1.00002
+step = 0.2
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_17tqs"]
+_data = {
+"RESET": SubResource("Animation_08qt2"),
+"health_bar": SubResource("Animation_k5n4o"),
+"shield_equip": SubResource("Animation_2rxyj")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p0d2g"]
 radius = 6.0
 height = 16.0
@@ -133,8 +132,15 @@ height = 16.0
 scale = Vector2(4, 4)
 script = ExtResource("1_ap05o")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_g6mju")
+animation = &"idle"
+autoplay = "idle"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_aj3m1")
+position = Vector2(1, 6)
+shape = SubResource("RectangleShape2D_vra41")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -143,12 +149,6 @@ libraries = {
 
 [node name="hands" parent="." instance=ExtResource("4_4c4ac")]
 position = Vector2(6, -0.25)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_g6mju")
-animation = &"idle"
-autoplay = "idle"
 
 [node name="hurt_box" type="Area2D" parent="."]
 collision_layer = 2

@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://dqu1cwjbiinev"]
 
-[ext_resource type="PackedScene" path="res://scenes/player/player.tscn" id="1_af5lh"]
+[ext_resource type="PackedScene" uid="uid://r17nt0aw2s2b" path="res://scenes/player/player.tscn" id="1_af5lh"]
 [ext_resource type="Script" path="res://scenes/main/main.gd" id="1_xkwbk"]
 [ext_resource type="Shader" path="res://scenes/menu/menu.gdshader" id="2_ggwg1"]
 [ext_resource type="PackedScene" uid="uid://5hrxkrop1apl" path="res://scenes/spawner/spawner.tscn" id="2_hi3kv"]
@@ -46,13 +46,13 @@ texture = ExtResource("4_iip0l")
 sources/0 = SubResource("TileSetAtlasSource_1ywtb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unbdd"]
-size = Vector2(50, 650)
+size = Vector2(50, 793.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvjmm"]
-size = Vector2(1216, 60)
+size = Vector2(1328, 60)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_skplj"]
-radius = 96.0
+radius = 80.0
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_xkwbk")
@@ -90,19 +90,19 @@ position = Vector2(521, 269)
 script = ExtResource("4_ymjk4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 315)
+position = Vector2(-82, 324)
 shape = SubResource("RectangleShape2D_unbdd")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1179, 320)
+position = Vector2(1232, 315.25)
 shape = SubResource("RectangleShape2D_unbdd")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(590, -18)
+position = Vector2(568, -82)
 shape = SubResource("RectangleShape2D_qvjmm")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(574, 655)
+position = Vector2(574, 723)
 shape = SubResource("RectangleShape2D_qvjmm")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
