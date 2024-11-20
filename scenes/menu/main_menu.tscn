@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://n2vsf6ljslgc" path="res://assets/ui/start.png" id="2_k2s6d"]
 [ext_resource type="Texture2D" uid="uid://dw3ucxsjeugjw" path="res://assets/ui/option.png" id="3_6w3sl"]
 [ext_resource type="Texture2D" uid="uid://bkkvj42scbwmy" path="res://assets/ui/container.png" id="4_8r6xg"]
-[ext_resource type="AudioStream" uid="uid://c70vttn27dh72" path="res://assets/musics/micro jame gameplay music B.mp3" id="6_srnbt"]
 [ext_resource type="Texture2D" uid="uid://tr40glpl42fv" path="res://assets/ui/option pressed.png" id="7_54pj4"]
 [ext_resource type="Texture2D" uid="uid://kghko32maf6x" path="res://assets/ui/exit.png" id="7_541lm"]
 [ext_resource type="FontFile" uid="uid://cxbhvx4ya8cc7" path="res://assets/ui/Silkscreen-Bold.ttf" id="8_ghc67"]
+[ext_resource type="AudioStream" uid="uid://cn3q05oqoc67r" path="res://assets/musics/UI music.mp3" id="9_4w4jx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h7x86"]
 shader = ExtResource("1_r5w2r")
@@ -83,7 +83,7 @@ scale = Vector2(4, 4)
 texture_normal = ExtResource("7_541lm")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_srnbt")
+stream = ExtResource("9_4w4jx")
 autoplay = true
 attenuation = 0.517632
 parameters/looping = true

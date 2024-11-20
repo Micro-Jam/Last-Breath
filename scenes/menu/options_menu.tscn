@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bhuu4drtmlkfr" path="res://assets/backgrounds/space background.png" id="2_v02gh"]
 [ext_resource type="Texture2D" uid="uid://bkkvj42scbwmy" path="res://assets/ui/container.png" id="3_5ach5"]
 [ext_resource type="Texture2D" uid="uid://kghko32maf6x" path="res://assets/ui/exit.png" id="5_4b2f8"]
-[ext_resource type="AudioStream" uid="uid://c70vttn27dh72" path="res://assets/musics/micro jame gameplay music B.mp3" id="6_vohhc"]
 [ext_resource type="FontFile" uid="uid://cxbhvx4ya8cc7" path="res://assets/ui/Silkscreen-Bold.ttf" id="7_5ac8h"]
 [ext_resource type="Texture2D" uid="uid://c1fyk4wlefeqp" path="res://assets/ui/sound checkbox.png" id="8_yeh1i"]
+[ext_resource type="AudioStream" uid="uid://cn3q05oqoc67r" path="res://assets/musics/UI music.mp3" id="9_d04wc"]
 [ext_resource type="Texture2D" uid="uid://dw8j8sa5wbmms" path="res://assets/ui/sound checkbox pressed.png" id="9_d8pym"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_11t3s"]
@@ -91,7 +91,7 @@ texture_normal = ExtResource("8_yeh1i")
 texture_pressed = ExtResource("9_d8pym")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_vohhc")
+stream = ExtResource("9_d04wc")
 autoplay = true
 attenuation = 0.517632
 parameters/looping = true

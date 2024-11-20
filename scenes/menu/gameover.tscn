@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://scenes/menu/menu.gdshader" id="2_igmf4"]
 [ext_resource type="Texture2D" uid="uid://kghko32maf6x" path="res://assets/ui/exit.png" id="6_b67h4"]
 [ext_resource type="FontFile" uid="uid://cxbhvx4ya8cc7" path="res://assets/ui/Silkscreen-Bold.ttf" id="7_2j38x"]
-[ext_resource type="AudioStream" uid="uid://c70vttn27dh72" path="res://assets/musics/micro jame gameplay music B.mp3" id="7_qktqb"]
+[ext_resource type="AudioStream" uid="uid://cn3q05oqoc67r" path="res://assets/musics/UI music.mp3" id="7_duroa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sq0qo"]
 shader = ExtResource("2_igmf4")
@@ -68,7 +68,7 @@ bbcode_enabled = true
 text = "[wave amp=30 freq=2]Game Over"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("7_qktqb")
+stream = ExtResource("7_duroa")
 autoplay = true
 attenuation = 0.517632
 parameters/looping = true
