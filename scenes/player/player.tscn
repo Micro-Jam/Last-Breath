@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=25 format=3 uid="uid://c4rjmy1oo3gtk"]
+=======
+[gd_scene load_steps=26 format=3 uid="uid://c4rjmy1oo3gtk"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_ap05o"]
 [ext_resource type="PackedScene" uid="uid://bw7apmvugkrpk" path="res://scenes/player/hands.tscn" id="4_4c4ac"]
@@ -6,11 +10,14 @@
 [ext_resource type="Texture2D" uid="uid://cm0nar47hlmlf" path="res://assets/characters/idle.png" id="5_n6dmj"]
 [ext_resource type="Texture2D" uid="uid://b3xtrjievvr5t" path="res://assets/ui/empty_bar.png" id="6_indbp"]
 [ext_resource type="Texture2D" uid="uid://c4c7i02hal804" path="res://assets/ui/bar.png" id="7_33u5l"]
+[ext_resource type="Texture2D" uid="uid://bnyx1xj706swl" path="res://assets/ui/joystick outercircle.png" id="8_5hitd"]
+[ext_resource type="Texture2D" uid="uid://blk6n4e7hggf8" path="res://assets/ui/joystick innercircle.png" id="9_n3t5x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aj3m1"]
 radius = 6.0
 height = 16.0
 
+<<<<<<< Updated upstream
 [sub_resource type="Animation" id="Animation_08qt2"]
 length = 0.001
 
@@ -30,6 +37,10 @@ _data = {
 "health_bar": SubResource("Animation_k5n4o"),
 "shield_equip": SubResource("Animation_2rxyj")
 }
+=======
+[sub_resource type="CircleShape2D" id="CircleShape2D_481vx"]
+radius = 22.0227
+>>>>>>> Stashed changes
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tb5hn"]
 atlas = ExtResource("5_n6dmj")
@@ -78,7 +89,7 @@ region = Rect2(0, 32, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_g6mju"]
 animations = [{
 "frames": [{
-"duration": 10.5,
+"duration": 10.0,
 "texture": SubResource("AtlasTexture_tb5hn")
 }, {
 "duration": 1.0,
@@ -92,7 +103,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 7.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -125,17 +136,36 @@ animations = [{
 radius = 6.0
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vl3vb"]
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 script = ExtResource("1_ap05o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_aj3m1")
 
+<<<<<<< Updated upstream
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_17tqs")
 }
+=======
+[node name="shield" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 0
+
+[node name="Sprite2D2" type="Sprite2D" parent="shield"]
+visible = false
+position = Vector2(40, -2)
+scale = Vector2(0.140625, 0.53125)
+texture = ExtResource("3_2lrkp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shield"]
+shape = SubResource("CircleShape2D_481vx")
+disabled = true
+>>>>>>> Stashed changes
 
 [node name="hands" parent="." instance=ExtResource("4_4c4ac")]
 position = Vector2(6, -0.25)
@@ -143,26 +173,8 @@ position = Vector2(6, -0.25)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_g6mju")
-animation = &"run"
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="health" type="TextureProgressBar" parent="."]
-unique_name_in_owner = true
-texture_filter = 1
-offset_left = -105.0
-offset_top = -53.0
-offset_right = -73.0
-offset_bottom = -37.0
-max_value = 90.0
-value = 90.0
-texture_under = ExtResource("6_indbp")
-texture_progress = ExtResource("7_33u5l")
-texture_progress_offset = Vector2(12.74, -6)
+animation = &"idle"
+autoplay = "idle"
 
 [node name="hurt_box" type="Area2D" parent="."]
 collision_layer = 2
@@ -172,6 +184,41 @@ collision_mask = 2
 shape = SubResource("CapsuleShape2D_p0d2g")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 0)
+
+[node name="health" type="TextureProgressBar" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 40.0
+offset_bottom = 24.0
+max_value = 20.0
+value = 20.0
+texture_under = ExtResource("6_indbp")
+texture_progress = ExtResource("7_33u5l")
+texture_progress_offset = Vector2(12.74, -6)
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="joystick" type="TouchScreenButton" parent="CanvasLayer/Control"]
+position = Vector2(12, -224)
+texture_normal = ExtResource("8_5hitd")
+shape = SubResource("CircleShape2D_vl3vb")
+
+[node name="joystick inner" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(20, -216)
+texture = ExtResource("9_n3t5x")
 
 [connection signal="area_entered" from="hurt_box" to="." method="_on_hurt_box_area_entered"]
 [connection signal="body_entered" from="hurt_box" to="." method="_on_hurt_box_body_entered"]

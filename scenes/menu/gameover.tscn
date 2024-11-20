@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://42vc40u4s4e0"]
+
+[ext_resource type="Texture2D" uid="uid://bhuu4drtmlkfr" path="res://assets/backgrounds/space background.png" id="1_dqo5n"]
+[ext_resource type="Script" path="res://scenes/menu/gameover.gd" id="1_pdqyi"]
+[ext_resource type="Texture2D" uid="uid://cnld7ajljhomt" path="res://assets/ui/continue.png" id="2_8hd3l"]
+[ext_resource type="Shader" path="res://scenes/menu/menu.gdshader" id="2_igmf4"]
+[ext_resource type="Texture2D" uid="uid://kghko32maf6x" path="res://assets/ui/exit.png" id="6_b67h4"]
+[ext_resource type="FontFile" uid="uid://cxbhvx4ya8cc7" path="res://assets/ui/Silkscreen-Bold.ttf" id="7_2j38x"]
+[ext_resource type="AudioStream" uid="uid://c70vttn27dh72" path="res://assets/musics/micro jame gameplay music B.mp3" id="7_qktqb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sq0qo"]
+shader = ExtResource("2_igmf4")
+
+[node name="Deadmenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pdqyi")
+
+[node name="Pattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_sq0qo")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("1_dqo5n")
+stretch_mode = 1
+
+[node name="restart" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 136.0
+offset_right = 286.0
+offset_bottom = 152.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_8hd3l")
+
+[node name="exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 208.0
+offset_right = 288.0
+offset_bottom = 224.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("6_b67h4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(339, 82)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 32.0
+offset_right = 200.0
+offset_bottom = 54.0
+scale = Vector2(4, 4)
+theme_override_fonts/normal_font = ExtResource("7_2j38x")
+bbcode_enabled = true
+text = "[wave amp=30 freq=2]Game Over"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_qktqb")
+autoplay = true
+attenuation = 0.517632
+parameters/looping = true
+
+[connection signal="pressed" from="restart" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_button_2_pressed"]

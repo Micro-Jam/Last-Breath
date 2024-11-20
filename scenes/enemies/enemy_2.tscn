@@ -85,8 +85,13 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
+<<<<<<< Updated upstream
 scale = Vector2(2, 2)
 collision_layer = 9
+=======
+scale = Vector2(4, 4)
+collision_layer = 13
+>>>>>>> Stashed changes
 collision_mask = 8
 script = ExtResource("1_lobkg")
 bullet_node = ExtResource("2_8la36")

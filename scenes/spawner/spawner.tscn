@@ -6,11 +6,11 @@
 script = ExtResource("1_ygf7r")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 autostart = true
 
 [node name="Timerb" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 10.0
 autostart = true
 
 [node name="boss_timer" type="Timer" parent="."]
