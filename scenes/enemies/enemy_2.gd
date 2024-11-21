@@ -59,7 +59,7 @@ func _on_timer_timeout() -> void:
 	can_shoot = true
 
 
-func _on_hurt_area_entered(area: Area2D) -> void:
+func _on_hurt_area_entered(_area: Area2D) -> void:
 	take_dmg()
 func take_dmg():
 	health -=50
