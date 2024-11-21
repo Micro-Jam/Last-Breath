@@ -6,16 +6,15 @@ extends Node2D
 #@onready var animation: AnimatedSprite2D = $".."
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var timer: Timer = $Timer
-@onready var sprite: Sprite2D = $Sprite2D
 
 
 var num_of_bullets = 4
 var can_shoot := true
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	look_at(get_global_mouse_position())
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("shoot") and can_shoot:
 	#	animation.play("shoot")
 		shoot()

@@ -16,7 +16,7 @@ var health: = 100:
 func _ready():
 	set_physics_process(false)
 	
-func _process(delta):
+func _process(_delta):
 	direction = player.position - position
 	if direction.x<0:
 		sprite.flip_h = true

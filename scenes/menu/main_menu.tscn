@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsvu1v7olafqm"]
+
+[ext_resource type="Script" path="res://scenes/menu/main_menu.gd" id="1_masxx"]
+[ext_resource type="Shader" path="res://scenes/menu/menu.gdshader" id="1_r5w2r"]
+[ext_resource type="Texture2D" uid="uid://bhuu4drtmlkfr" path="res://assets/backgrounds/space background.png" id="1_xqqgh"]
+[ext_resource type="Texture2D" uid="uid://n2vsf6ljslgc" path="res://assets/ui/start.png" id="2_k2s6d"]
+[ext_resource type="Texture2D" uid="uid://dw3ucxsjeugjw" path="res://assets/ui/option.png" id="3_6w3sl"]
+[ext_resource type="Texture2D" uid="uid://bkkvj42scbwmy" path="res://assets/ui/container.png" id="4_8r6xg"]
+[ext_resource type="Texture2D" uid="uid://tr40glpl42fv" path="res://assets/ui/option pressed.png" id="7_54pj4"]
+[ext_resource type="Texture2D" uid="uid://kghko32maf6x" path="res://assets/ui/exit.png" id="7_541lm"]
+[ext_resource type="FontFile" uid="uid://cxbhvx4ya8cc7" path="res://assets/ui/Silkscreen-Bold.ttf" id="8_ghc67"]
+[ext_resource type="AudioStream" uid="uid://cn3q05oqoc67r" path="res://assets/musics/UI music.mp3" id="9_4w4jx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h7x86"]
+shader = ExtResource("1_r5w2r")
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_masxx")
+
+[node name="Pattern" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_h7x86")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -320.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("1_xqqgh")
+stretch_mode = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 32.0
+offset_right = 488.0
+offset_bottom = 120.0
+scale = Vector2(3, 3)
+texture = ExtResource("4_8r6xg")
+region_rect = Rect2(0, 0, 44, 44)
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 5
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[node name="start" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 64.0
+offset_right = 488.0
+offset_bottom = 80.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_k2s6d")
+
+[node name="options" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 136.0
+offset_right = 488.0
+offset_bottom = 152.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_6w3sl")
+texture_pressed = ExtResource("7_54pj4")
+
+[node name="exit" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 208.0
+offset_right = 488.0
+offset_bottom = 224.0
+scale = Vector2(4, 4)
+texture_normal = ExtResource("7_541lm")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_4w4jx")
+autoplay = true
+attenuation = 0.517632
+parameters/looping = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 138.0
+offset_bottom = 78.0
+scale = Vector2(4, 4)
+theme_override_fonts/normal_font = ExtResource("8_ghc67")
+bbcode_enabled = true
+text = "[wave amp=30 freq=2]Last Breath"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]

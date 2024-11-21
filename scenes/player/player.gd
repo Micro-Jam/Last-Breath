@@ -3,37 +3,59 @@ extends CharacterBody2D
 var speed = 300
 var click_position = Vector2(0, 0)
 
-@onready var sprite: Sprite2D = $Sprite2D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-
-var health :float= 100:
+	
+var health = 10:
 	set(value):
 		health = value
-		$health.value = value
-		if health <= 0:
-			#get_tree().change_scene_to_file("res://scenes/deadmenu/deadmenu.tscn")
-			pass
-func _physics_process(delta: float) -> void:
-	movement(delta)
+		$CanvasLayer/health.value = value
 
-func movement(delta):##Player's movement
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta):
+	movement(delta)
+	if health <= 0:
+		get_tree().change_scene_to_file("res://scenes/menu/gameover.tscn")
+		
+func _input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch or event is InputEventScreenDrag:
+		if $CanvasLayer/Control/joystick.is_pressed():
+			velocity = calculate_joystick_movement(event.position)
+			
+			
+	
+func calculate_joystick_movement(event_position):
+	var texture_center = $CanvasLayer/Control/joystick.position + Vector2(8,8)
+	return (event_position - texture_center)
+
+
+
+func movement(delta):		## Player's movement
 	var direction = Input.get_vector("left","right","up","down");
 	velocity = lerp(velocity, direction*speed, delta*10);
+	print(direction)
+	
 	if direction.x < 0:
 		animated_sprite.flip_h  = true;
 		animated_sprite.play("run")
+		move_and_slide()
+		
 	elif direction.x > 0:
 		animated_sprite.flip_h = false
 		animated_sprite.play("run")
+		move_and_slide()
+		
+	elif direction.y != 0:
+		animated_sprite.play("run")
+		move_and_slide()
+		
 	else:
 		animated_sprite.play("idle")
-	move_and_slide();
+	
+
+func _on_hurt_box_body_entered(_body: Node2D) -> void:
+	health -= 1
 
 
-func _on_hurt_box_body_entered(body: Node2D) -> void:
-	health-=30
-
-
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	health-=30
+func _on_hurt_box_area_entered(_area: Area2D) -> void:
+	health -= 1

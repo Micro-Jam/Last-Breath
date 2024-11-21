@@ -14,7 +14,7 @@ var player_entered : bool = false:
 
 
 
-func _on_detection_body_entered(body):
+func _on_detection_body_entered(_body):
 	player_entered = true
 	
 func transition():
